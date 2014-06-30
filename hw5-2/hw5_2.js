@@ -1,0 +1,1 @@
+db.grades.aggregate([{$match:{$or:[{state:'CA'},{state:'NY'}]}},{$group:{_id:{'city':'$city','state':'$state'},total:{$sum:'$pop'}}},{$match:{total:{$gt:25000}}},{$group:{_id:null,avg:{$avg:'$total'}}}])
